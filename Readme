@@ -1,0 +1,12 @@
+
+
+cd prediction-system/seed/
+sudo chmod u+x prediction_system_setup.sh
+./prediction_system_setup.sh
+
+
+
+cd oozie/
+sudo chmod u+x
+
+

@@ -19,19 +19,18 @@
                 </property>
             </configuration>
             <script>join-vehicle-and-usage.hql</script>
-            <param>user=${user.name}</param>
             <param>location=${inputDir}</param>
             <file>hive-site.xml#hive-site.xml</file>
         </hive>
         <ok to="GenerateServicingEvent"/>
-        <error to="error"/>
+        <error to="end"/>
     </action>
 
     <action name="GenerateServicingEvent">
         <java>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
-            <main-class>com.cat.olga.driver.GeneratingOpportunitiesDriver</main-class>
+            <main-class>com.sleepythread.EventGeneratorDriver</main-class>
             <java-opts>
                 -DinputPath=${inputDir}
                 -DoutputPath=${outputDir}
@@ -40,15 +39,10 @@
             <arg>${nameNode}/user/${user.name}/workflow/lib/joda-time-2.3.jar</arg>
         </java>
         <ok to="end"/>
-        <error to="error"/>
+        <error to="end"/>
     </action>
 
     <end name="end"/>
 
-    <kill name="error">
-    <message>
-        error message[${wf:errorMessage(wf:lastErrorNode())}]
-    </message>
-    </kill>
 
 </workflow-app>
