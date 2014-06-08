@@ -20,6 +20,7 @@
             </configuration>
             <script>join-vehicle-and-usage.hql</script>
             <param>user=${user.name}</param>
+            <param>location=${inputDir}</param>
             <file>hive-site.xml#hive-site.xml</file>
         </hive>
         <ok to="GenerateServicingEvent"/>
