@@ -4,6 +4,7 @@
   <artifactId>prediction-system</artifactId>
   <packaging>jar</packaging>
   <version>0.1</version>
+  <groupId>com.sleepythread</groupId>
   <name>prediction-system</name>
   <url>http://maven.apache.org</url>
 
