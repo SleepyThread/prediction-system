@@ -7,7 +7,7 @@
         <hive xmlns="uri:oozie:hive-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
-            <job-xml>hive-site.xml</job-xml>
+            <job-xml>hive-site-conf.xml</job-xml>
             <configuration>
                 <property>
                     <name>mapred.job.queue.name</name>
@@ -15,29 +15,33 @@
                 </property>
                 <property>
                     <name>oozie.hive.defaults</name>
-                    <value>hive-site.xml</value>
+                    <value>hive-site-conf.xml</value>
                 </property>
             </configuration>
             <script>join-vehicle-and-usage.hql</script>
             <param>location=${inputDir}</param>
-            <file>hive-site.xml#hive-site.xml</file>
+            <file>hive-site-conf.xml#hive-site-conf.xml</file>
         </hive>
         <ok to="GenerateServicingEvent"/>
         <error to="end"/>
     </action>
 
     <action name="GenerateServicingEvent">
-        <java>
+          <java>
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+            <prepare>
+              <delete path="${outputDir}"/>
+            </prepare>
+            <configuration>
+              <property>
+                <name>mapred.job.queue.name</name>
+                <value>${queueName}</value>
+              </property>
+            </configuration>
             <main-class>com.sleepythread.EventGeneratorDriver</main-class>
-            <java-opts>
-                -DinputPath=${inputDir}
-                -DoutputPath=${outputDir}
-            </java-opts>
-            <arg>-libjars</arg>
-            <arg>${nameNode}/user/${user.name}/workflow/lib/joda-time-2.3.jar</arg>
-        </java>
+            <java-opts>-DinputPath=${inputDir} -DoutputPath=${outputDir}</java-opts>
+          </java>
         <ok to="end"/>
         <error to="end"/>
     </action>

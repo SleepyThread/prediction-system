@@ -21,7 +21,7 @@ public class EventGeneratorDriver extends Configured implements Tool {
         configuration.set("startDate", "2014-01-01");
         configuration.set("endDate", "2015-01-01");
 
-        Job job = new Job(configuration, "Event Generator");
+        Job job = Job.getInstance(configuration, "Event Generator");
 
         job.setJarByClass(EventGeneratorDriver.class);
         FileInputFormat.setInputPaths(job, new Path(System.getProperty("inputPath")));

@@ -9,11 +9,6 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-
-import static java.util.Arrays.asList;
-
 
 public class EventGeneratorMapper extends Mapper<Object, Text, NullWritable, Text> {
 

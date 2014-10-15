@@ -1,4 +1,3 @@
-
 DROP TABLE vehicle_data;
 
 CREATE EXTERNAL TABLE vehicle_data(

@@ -5,7 +5,7 @@
 <configuration>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:mysql://pune-hadoop01.thoughtworks.com:3306/hive?createDatabaseIfNotExist=true</value>
+        <value>jdbc:postgresql://datanode2.hadoopcluster.org:7432/hive?createDatabaseIfNotExist=true</value>
     </property>
 
     <property>
@@ -15,12 +15,17 @@
 
     <property>
         <name>javax.jdo.option.ConnectionUserName</name>
-        <value>root</value>
+        <value>hive</value>
     </property>
 
     <property>
         <name>javax.jdo.option.ConnectionPassword</name>
-        <value>h@d00p</value>
+        <value>5pUvvO7C3n</value>
     </property>
+
+    <property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://resource-mgr.hadoopcluster.org:9083</value>
+  </property>
 
 </configuration>
