@@ -41,6 +41,8 @@
             </configuration>
             <main-class>com.sleepythread.EventGeneratorDriver</main-class>
             <java-opts>-DinputPath=${inputDir} -DoutputPath=${outputDir}</java-opts>
+            <arg>-libjars</arg>
+            <arg>${nameNode}/user/hadoop/workflow/lib/joda-time-2.3.jar</arg>
           </java>
         <ok to="end"/>
         <error to="end"/>

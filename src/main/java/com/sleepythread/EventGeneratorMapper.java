@@ -36,7 +36,7 @@ public class EventGeneratorMapper extends Mapper<Object, Text, NullWritable, Tex
 
 
         while (nextServicingDate.isBefore(endDate)){
-            Text text = new Text(id+HIVE_COLUMN_SEPARATOR+nextServicingKm+HIVE_COLUMN_SEPARATOR+nextServicingKm);
+            Text text = new Text(id+HIVE_COLUMN_SEPARATOR+nextServicingKm+HIVE_COLUMN_SEPARATOR+dateTimeFormatter.print(nextServicingDate));
             context.write(NullWritable.get(), text);
 
             nextServicingKm = nextServicingKm + interval;

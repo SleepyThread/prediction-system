@@ -22,4 +22,11 @@ ROW FORMAT DELIMITED
 LOCATION '/user/hadoop/data/usage';
 
 
+CREATE EXTERNAL TABLE service_events(
+id double,
+servicingKm string,
+servicingDate string
+)
+LOCATION '/user/hadoop/data/service_event';
+
 
