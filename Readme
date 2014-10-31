@@ -1,12 +1,28 @@
 
+This is a sample adhoc solution for Problem Defined in blog "http://sleepythread.blogspot.in/2014/10/hadoop-problem-simple-predection-system.html"
+
+1. Data Setup:
+
+First you need to setup the data in the Hadoop and schemas in Hive.
+
 
 cd prediction-system/seed/
 sudo chmod u+x prediction_system_setup.sh
 ./prediction_system_setup.sh
 
+Note:
+  1. Change the "hive" alias location to the actual location of hive on you env.
 
 
-cd oozie/
-sudo chmod u+x
+2. Next you need to update the job_sample.properties and add namenode & jobtracker url.
 
+3. Build the workflow package.
+ 1. Building the package
+    = mvn clean package
+ 2. Copy the tar from target/prediction-system-0.1-workflow-package.tar.gz to host having Oozie client install
+ 3. Untar the package
+    = tar -xvf prediction-system-0.1-workflow-package.tar.gz
 
+4. Running the workflow:
+
+  1. ./prediction-system-0.1/bin/run_job.sh
