@@ -23,7 +23,7 @@
             <file>hive-site-conf.xml#hive-site-conf.xml</file>
         </hive>
         <ok to="GenerateServicingEvent"/>
-        <error to="end"/>
+        <error to="kill"/>
     </action>
 
     <action name="GenerateServicingEvent">
@@ -45,8 +45,12 @@
             <arg>${nameNode}/user/hadoop/workflow/lib/joda-time-2.3.jar</arg>
           </java>
         <ok to="end"/>
-        <error to="end"/>
+        <error to="kill"/>
     </action>
+
+  <kill name="kill">
+    <message>error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+  </kill>
 
     <end name="end"/>
 
