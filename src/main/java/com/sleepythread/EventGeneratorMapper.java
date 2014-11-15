@@ -35,8 +35,8 @@ public class EventGeneratorMapper extends Mapper<Object, Text, NullWritable, Tex
         Double daysToCompleteIntervalUsingRate = (interval/rate);
 
 
-        while (nextServicingDate.isBefore(endDate)){
-            Text text = new Text(id+HIVE_COLUMN_SEPARATOR+nextServicingKm+HIVE_COLUMN_SEPARATOR+dateTimeFormatter.print(nextServicingDate));
+        while (rate != 0 && nextServicingDate.isBefore(endDate)){
+            Text text = new Text(id.intValue()+HIVE_COLUMN_SEPARATOR+nextServicingKm.intValue()+HIVE_COLUMN_SEPARATOR+dateTimeFormatter.print(nextServicingDate));
             context.write(NullWritable.get(), text);
 
             nextServicingKm = nextServicingKm + interval;

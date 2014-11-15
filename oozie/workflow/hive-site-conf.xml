@@ -3,27 +3,8 @@
 
 
 <configuration>
-    <property>
-        <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:postgresql://datanode2.hadoopcluster.org:7432/hive?createDatabaseIfNotExist=true</value>
-    </property>
 
-    <property>
-        <name>javax.jdo.option.ConnectionDriverName</name>
-        <value>com.mysql.jdbc.Driver</value>
-    </property>
-
-    <property>
-        <name>javax.jdo.option.ConnectionUserName</name>
-        <value>hive</value>
-    </property>
-
-    <property>
-        <name>javax.jdo.option.ConnectionPassword</name>
-        <value>5pUvvO7C3n</value>
-    </property>
-
-    <property>
+  <property>
     <name>hive.metastore.uris</name>
     <value>thrift://resource-mgr.hadoopcluster.org:9083</value>
   </property>
