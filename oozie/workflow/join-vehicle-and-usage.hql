@@ -1,6 +1,10 @@
-DROP TABLE vehicle_data;
+use default;
 
-CREATE EXTERNAL TABLE vehicle_data(
+show tables;
+
+DROP TABLE IF EXISTS default.vehicle_data;
+
+CREATE EXTERNAL TABLE default.vehicle_data(
 id double,
 interval double,
 rate double,
@@ -16,8 +20,8 @@ vc.interval,
 us.rate,
 us.current_usage,
 us.capture_date
-FROM vehicle vc
-JOIN usage us
+FROM default.vehicle vc
+JOIN default.usage us
 ON vc.id = us.id
 
 

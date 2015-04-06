@@ -6,7 +6,7 @@
 
   <property>
     <name>hive.metastore.uris</name>
-    <value>thrift://resource-mgr.hadoopcluster.org:9083</value>
+    <value>thrift://<IP>:<PORT></value>
   </property>
 
 </configuration>
